@@ -16,7 +16,7 @@ function Login() {
         axios.post("http://localhost:8080/login", value)
         .then(res => {
             if (res.data.Status === "Success") {
-                navigate("/")
+                navigate("/secret")
             } else {
                 alert(res.data.Error)
             }
@@ -39,7 +39,7 @@ function Login() {
                         <label htmlFor="">Password</label>
                         <input name='password' type="password" placeholder='password'onChange={(e) => {setValue({...value, password: e.target.value})}}/>
                     </div>
-                
+               
                     <div className="forgot_password">Forgot password? <span>Click Here</span></div>
                     <div className="submit_container">
                         <Link to="/register" className="submit">SignUp</Link>

@@ -27,7 +27,7 @@ db.connect();
 
 const verifyUser = (req, res, next) => {
     const token = req.cookies.token
-    if (!token) {
+    if (token == null) {
         return res.json({Error: "You are not authorized"})
     } else {
         jwt.verify(token, "jwt-secret-key", (err, decoded) => {
@@ -41,8 +41,12 @@ const verifyUser = (req, res, next) => {
     }
 }
 
-app.get("/",verifyUser, (req,res) => {
-    return res.json({Status: "Success", name: req.name})
+app.get("/", (req,res) => {
+    return res.json({Status: "Success"})
+})
+
+app.get("/secret", verifyUser, (req,res) => {
+    return res.json({Status: "Secret Success"})
 })
 
 app.post("/register", (req,res) => {
@@ -77,7 +81,7 @@ app.post("/login", async(req,res) => {
                 if(err) return res.json({Error: "Comparing password error"})
                 if (response) {
                     const name = result.rows[0].name
-                    const token = jwt.sign({name}, "jwt-secret-key", {expiresIn: '1d'})
+                    const token = jwt.sign({name}, "jwt-secret-key", {expiresIn: '1h'})
                     res.cookie('token', token);
                     return res.json({Status: "Success"})
                 } else {
