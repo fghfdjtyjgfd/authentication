@@ -18,7 +18,7 @@ function Secret() {
         }
         })
         .then(err => console.log(err))
-    })
+    }, [])
 
     function handleDelete() {
     axios.get("http://localhost:8080/logout")

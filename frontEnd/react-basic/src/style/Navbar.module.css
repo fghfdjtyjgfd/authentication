@@ -1,0 +1,18 @@
+.menu {
+    background-color: black;
+    height: 50px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.textMenu {
+    color: rgb(0, 197, 184);
+    text-decoration: none;
+    margin: 10px 20px;
+    font-weight: 300;
+}
+
+.textMenu:hover {
+    color: yellow;
+}

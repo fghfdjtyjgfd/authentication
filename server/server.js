@@ -1,5 +1,4 @@
 import express from "express";
-import mysql from "mysql";
 import pg from 'pg';
 import cors from "cors";
 import jwt from "jsonwebtoken";
